@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashdeep-Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(2, 2, 52);
+            color: aliceblue;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            
+            align-items: center;
+            height: 80px;
+            background-color: rgb(39, 39, 85);
+            padding: 0 20px;
+            
+        }
+
+        nav .left {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: rgb(109, 109, 238);
+            
+            font-size: 1.2rem;
+        }
+
+        main hr {
+            border: 0;
+            background: rgb(187, 129, 241);
+            height: 1.2px;
+            margin: 60px 84px;
+        }
+
+        .firstSection {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 140px 0;
+            padding: 0 20px;
+        }
+
+        .firstSection .leftSection {
+            font-size: 3rem;
+            width: 50%;
+        }
+
+        .firstSection .leftSection .buttons{
+            padding: 40px 0;
+        }
+
+        .firstSection .leftSection .btn {
+            padding: 12px;
+            background: #1e2167;
+            color: white;
+            border: 2px solid white;
+            border-radius: 6px;
+            font-size: 20px;
+            cursor: pointer;
+
+        }
+
+        .firstSection .rightSection img {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+        }
+
+        .purple {
+            color: blueviolet;
+            color: blueviolet;
+        }
+
+        .text-gray {
+            color: grey;
+        }
+
+
+        #element {
+            color: blueviolet;
+
+        }
+
+        .secondSection {
+            max-width: 80vw;
+            margin: auto;
+
+        }
+
+        .secondSection h1 {
+            font-size: 1.9rem;
+        }
+
+
+        .secondSection .box {
+            background: white;
+            width: 74vw;
+            height: 2px;
+            margin: 40px 0;
+            display: flex;
+
+        }
+
+        .secondSection .vertical {
+            height: 93px;
+            width: 1px;
+            background-color: white;
+            margin: 0 120px;
+
+        }
+
+        .image-top {
+            width: 50px;
+            position: relative;
+            top: -52px;
+            left: -25px;
+
+        }
+
+        .vertical-title {
+            position: relative;
+            top: 75px;
+            width: 150px;
+            font-size: 25px;
+        }
+
+        .vertical-desc {
+            position: relative;
+            top: 100px;
+            color: grey;
+            width: 150px;
+            font-size: 20px;
+        }
+
+        footer {
+            background-color: #0e0e1a;
+        }
+
+        .footer {
+            display: flex;
+            margin: 450px 5px;
+            justify-content: space-evenly;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer>div {
+            width: 200px;
+        }
+
+        footer .footer-rights {
+            text-align: center;
+            color: gray;
+            padding: 12px;
+        }
+     
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Yashdeep's Portfolio</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="firstSection">
+            <div class="leftSection">
+                Hi, My name is <span class="purple">Yashdeep</span>
+                <div>and I am a Passionate</div>
+                <span id="element"></span>
+
+                <div class="buttons">
+                    <a href="my-portfolio/files/resume.pdf.pdf" download="Yashdeep_Resume.pdf" target="_blank" class="btn">Download Resume</a>
+
+
+
+
+                    <a href="https://github.com/YashdeepDrall" target="_blank" class="btn">Visit GitHub</a>
+
+                </div>
+            </div>
+            <div class="rightSection">
+                <img src="bg.png.png" alt="Background Image">
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="secondSection">
+            <span class="text-gray">What I have done so far</span>
+            <h1>Work Experience</h1>
+
+            <div class="box">
+
+                <div class="vertical">
+                    <img class="image-top" src="developer.png" alt="">
+
+                    <div class="vertical-title">
+                       Website Development
+                    </div>
+
+                    <div class="vertical-desc">
+                     Portfolio : Made an Dynamic website using HTML , CSS and Javascript 
+
+                    </div>
+                </div>
+
+                <div class="vertical">
+                    <img class="image-top" src="photoshop.png" alt="">
+
+                    <div class="vertical-title">
+                        Video Editing
+                    </div>
+
+                    <div class="vertical-desc">
+                        Knows how to use and interact with Adobe Photoshop
+
+                    </div>
+                </div>
+
+                <div class="vertical">
+                    <img class="image-top" src="blender.png" alt="">
+
+                    <div class="vertical-title">
+                        3D Designs
+                    </div>
+
+                    <div class="vertical-desc">
+                        Knows how to use and interact with Blender Software
+
+                    </div>
+                </div>
+
+                <div class="vertical">
+                    <img class="image-top" src="python.png" alt="">
+
+                    <div class="vertical-title">
+                       Programming Languages
+                    </div>
+
+                    <div class="vertical-desc">
+                      Knows how to use and interact with PHP , Phtyon , NodeJS etc..
+
+                    </div>
+                </div>
+
+                <div class="vertical">
+                    <img class="image-top" src="DSA.png" alt="">
+
+                    <div class="vertical-title">
+                        Currently Working....
+                    </div>
+
+                    <div class="vertical-desc">
+                        DSA Projects and learning Programming Languages....
+
+                    </div>
+                </div>
+
+
+                <div class="vertical"></div>
+                <div class="vertical"></div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+
+        <div class="footer">
+
+          
+
+        <div class="footer-rights">
+            Copyright &#169; www.yashportfolio.com | All rights reserved
+        </div>
+</div>
+
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Setup and start animation! -->
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Web Developer', 'Graphic Designer', 'Web Designer', 'Video Editor'],
+            typeSpeed: 50,
+        });
+    </script>
+</body>
+
+</html>
