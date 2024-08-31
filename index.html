@@ -11,78 +11,134 @@
         rel="stylesheet">
     <style>
         * {
-            margin: 0;
-            padding: 0;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            background-color: rgb(2, 2, 52);
-            color: aliceblue;
-            font-family: 'Poppins', sans-serif;
-        }
+body {
+    background-color: rgb(2, 2, 52);
+    color: aliceblue;
+    font-family: 'Poppins', sans-serif;
+}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            
-            align-items: center;
-            height: 80px;
-            background-color: rgb(39, 39, 85);
-            padding: 0 20px;
-            
-        }
+/* Navbar Styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    background-color: rgb(39, 39, 85);
+    padding: 0 20px;
+}
 
-        nav .left {
-            font-size: 1.5rem;
-        }
+nav .left {
+    font-size: 1.5rem;
+}
 
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: rgb(109, 109, 238); /* Color for hover and active state */
+    font-size: 1.2rem;
+}
+
+/* For the hamburger menu */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    position: absolute; /* Absolute positioning within the nav container */
+    right: 20px; /* Adjust this to align the hamburger icon to the right */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.hamburger:hover {
+    color: rgb(109, 109, 238);
+    transform: scale(1.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+        /* Optional: Add transition effects */
         nav ul {
-            display: flex;
-            list-style: none;
+            transition: max-height 0.3s ease-out;
         }
 
-        nav ul li {
-            margin: 0 15px;
-            
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            
-            color: white;
-        }
-
-        nav ul li a:hover {
-            color: rgb(109, 109, 238);
-            
-            font-size: 1.2rem;
+        nav ul.active {
+            max-height: 500px;
+            /* Adjust height to show menu */
         }
 
         main hr {
             border: 0;
             background: rgb(187, 129, 241);
             height: 1.2px;
-            margin: 60px 84px;
+            margin: 60px 20px;
         }
 
         .firstSection {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             margin: 140px 0;
             padding: 0 20px;
+            overflow-x: auto;
         }
 
         .firstSection .leftSection {
             font-size: 3rem;
-            width: 50%;
+            width: 60%;
+            text-align: center;
         }
 
-        .firstSection .leftSection .buttons{
+        .firstSection .buttons {
+            display: flex;
+            justify-content: center;
+            /* Align buttons horizontally in the center */
+            gap: 20px;
+            /* Space between buttons */
             padding: 40px 0;
         }
 
-        .firstSection .leftSection .btn {
+        .firstSection .btn {
             padding: 12px;
             background: #1e2167;
             color: white;
@@ -90,17 +146,33 @@
             border-radius: 6px;
             font-size: 20px;
             cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            /* Ensure text decoration is none */
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+            /* Smooth transition for hover effect */
+        }
 
+        .firstSection .btn:hover {
+            background: white;
+            color: #1e2167;
+            /* Change text color on hover */
+        }
+
+        .firstSection .rightSection {
+            width: 40%;
+            text-align: right;
         }
 
         .firstSection .rightSection img {
-            width: 80%;
+            width: 100%;
             max-width: 500px;
             height: auto;
+            border-radius: 10px;
         }
 
         .purple {
-            color: blueviolet;
             color: blueviolet;
         }
 
@@ -108,87 +180,187 @@
             color: grey;
         }
 
-
         #element {
             color: blueviolet;
-
         }
 
         .secondSection {
-            max-width: 80vw;
+            max-width: 90%;
             margin: auto;
-
+            padding: 20px;
         }
 
         .secondSection h1 {
             font-size: 1.9rem;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-
         .secondSection .box {
-            background: white;
-            width: 74vw;
-            height: 2px;
-            margin: 40px 0;
+            background: rgb(39, 39, 85);
+            ;
+            /* Adjust background color as needed */
+            width: 100%;
+            /* Ensure it takes full width */
+            padding: 20px;
+            /* Add padding for better spacing */
             display: flex;
-
+            justify-content: space-around;
+            /* Space out items evenly */
+            flex-wrap: wrap;
+            /* Allow items to wrap on smaller screens */
         }
 
         .secondSection .vertical {
-            height: 93px;
-            width: 1px;
-            background-color: white;
-            margin: 0 120px;
-
+            flex: 1 1 250px;
+            /* Adjust flex basis for responsiveness */
+            max-width: 300px;
+            /* Limit maximum width */
+            margin: 10px;
+            /* Margin around each vertical section */
+            text-align: left;
+            /* Align text to the left */
+            padding: 20px;
+            /* Add padding inside the section */
         }
+
+        .secondSection .vertical:last-of-type {
+            text-align: left;
+            /* Align last item text to the left */
+        }
+
+        /* Specific styling for the 'Currently Working....' section */
+        .secondSection .vertical:last-of-type .vertical-title,
+        .secondSection .vertical:last-of-type .vertical-desc {
+            text-align: left;
+            /* Align text inside to the left */
+        }
+
 
         .image-top {
             width: 50px;
             position: relative;
-            top: -52px;
-            left: -25px;
-
+            top: -20px;
+            left: -6px;
         }
 
         .vertical-title {
-            position: relative;
-            top: 75px;
-            width: 150px;
-            font-size: 25px;
+            font-size: 1.5rem;
+            margin-top: 10px;
         }
 
         .vertical-desc {
-            position: relative;
-            top: 100px;
             color: grey;
-            width: 150px;
-            font-size: 20px;
+            font-size: 1rem;
+            margin-top: 10px;
         }
 
         footer {
             background-color: #0e0e1a;
+            padding: 20px 0;
         }
 
         .footer {
             display: flex;
-            margin: 450px 5px;
-            justify-content: space-evenly;
-        }
-
-        .footer ul {
-            list-style: none;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
         }
 
         .footer>div {
-            width: 200px;
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
         }
 
         footer .footer-rights {
-            text-align: center;
             color: gray;
             padding: 12px;
         }
-     
+
+        /* Responsive Media Queries */
+        @media (max-width: 1200px) {
+            .firstSection .leftSection {
+                font-size: 2.5rem;
+            }
+
+            .firstSection .rightSection img {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .firstSection {
+                flex-direction: column;
+                align-items: center;
+                overflow-x: hidden;
+            }
+
+            .firstSection .leftSection {
+                font-size: 2rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .firstSection .rightSection {
+                width: 100%;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .firstSection .rightSection img {
+                max-width: 100%;
+            }
+
+            .secondSection .box {
+                width: 100%;
+            }
+
+            .secondSection .vertical {
+                width: 100%;
+                max-width: 300px;
+                padding: 10px;
+            }
+
+            .vertical-title,
+            .vertical-desc {
+                font-size: 1rem;
+            }
+
+            .footer {
+                flex-direction: column;
+            }
+
+            .footer>div {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .firstSection .leftSection {
+                font-size: 1.5rem;
+            }
+
+            .firstSection .btn {
+                font-size: 1rem;
+                padding: 8px;
+            }
+        }
     </style>
 </head>
 
@@ -196,15 +368,18 @@
     <header>
         <nav>
             <div class="left">Yashdeep's Portfolio</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
+            <ul id="navMenu">
+                <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
+                <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+                <li><a href="services.html" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="projects.html" class="nav-link" data-page="projects">Projects</a></li>
+                <li><a href="contact.html" class="nav-link" data-page="contact">Contact Me</a></li>
             </ul>
+            <div class="hamburger" id="hamburgerMenu">&#9776;</div> <!-- Hamburger icon -->
         </nav>
     </header>
+    
+
     <main>
         <section class="firstSection">
             <div class="leftSection">
@@ -213,7 +388,8 @@
                 <span id="element"></span>
 
                 <div class="buttons">
-                    <a href="resume.pdf.pdf" download="Yashdeep_Resume.pdf" target="_blank" class="btn">Download Resume</a>
+                    <a href="my-portfolio/files/resume.pdf.pdf" download="Yashdeep_Resume.pdf" target="_blank"
+                        class="btn">Download Resume</a>
 
 
 
@@ -223,7 +399,7 @@
                 </div>
             </div>
             <div class="rightSection">
-                <img src="bg.png.png" alt="Background Image">
+                <img src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif" alt="">
             </div>
         </section>
 
@@ -239,11 +415,11 @@
                     <img class="image-top" src="developer.png" alt="">
 
                     <div class="vertical-title">
-                       Website Development
+                        Website Development
                     </div>
 
                     <div class="vertical-desc">
-                     Portfolio : Made an Dynamic website using HTML , CSS and Javascript 
+                        Portfolio : Made an Dynamic website using HTML , CSS and Javascript
 
                     </div>
                 </div>
@@ -278,11 +454,11 @@
                     <img class="image-top" src="python.png" alt="">
 
                     <div class="vertical-title">
-                       Programming Languages
+                        Programming Languages
                     </div>
 
                     <div class="vertical-desc">
-                      Knows how to use and interact with PHP , Phtyon , NodeJS etc..
+                        Knows how to use and interact with PHP , Phtyon , NodeJS etc..
 
                     </div>
                 </div>
@@ -313,23 +489,49 @@
 
         <div class="footer">
 
-          
 
-        <div class="footer-rights">
-            Copyright &#169; www.yashportfolio.com | All rights reserved
+
+            <div class="footer-rights">
+                Copyright &#169; www.yashportfolio.com | All rights reserved
+            </div>
         </div>
-</div>
 
     </footer>
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <!-- Setup and start animation! -->
     <script>
+
         var typed = new Typed('#element', {
             strings: ['Web Developer', 'Graphic Designer', 'Web Designer', 'Video Editor'],
             typeSpeed: 50,
         });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the current page URL (excluding query parameters)
+        const currentPage = window.location.pathname.split('/').pop();
+
+        // Select all nav links
+        const navLinks = document.querySelectorAll('nav .nav-link');
+
+        // Loop through nav links and add 'active' class to the current page
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+
+
+document.getElementById('hamburgerMenu').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.toggle('active');
+});
+
+
     </script>
+
+
 </body>
 
 </html>
