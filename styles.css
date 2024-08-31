@@ -1,7 +1,7 @@
-
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -10,6 +10,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+/* Navbar Styles */
 nav {
     display: flex;
     justify-content: space-between;
@@ -26,6 +27,8 @@ nav .left {
 nav ul {
     display: flex;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -35,12 +38,16 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: white;
+    padding: 10px;
+    transition: color 0.3s ease, font-size 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: rgb(109, 109, 238);
+nav ul li a:hover,
+nav ul li a.active {
+    color: rgb(109, 109, 238); /* Color for hover and active state */
     font-size: 1.2rem;
 }
+
 
 main hr {
     border: 0;
