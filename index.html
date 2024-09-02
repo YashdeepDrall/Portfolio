@@ -389,11 +389,11 @@
     <div id="sidebar" class="sidebar">
         <div id="closeSidebar" class="close-btn">&#10005;</div>
         <ul>
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
-            <li><a href="services.html" class="nav-link">Services</a></li>
-            <li><a href="projects.html" class="nav-link">Projects</a></li>
-            <li><a href="contact.html" class="nav-link">Contact Me</a></li>
+            <li><a href="index.html" class="sidebar-link">Home</a></li>
+            <li><a href="about.html" class="sidebar-link">About</a></li>
+            <li><a href="services.html" class="sidebar-link">Services</a></li>
+            <li><a href="projects.html" class="sidebar-link">Projects</a></li>
+            <li><a href="contact.html" class="sidebar-link">Contact Me</a></li>
         </ul>
     </div>
 
@@ -529,17 +529,35 @@
             // Get the current page URL (excluding query parameters)
             const currentPage = window.location.pathname.split('/').pop();
 
-            // Select all nav links
-            const navLinks = document.querySelectorAll('nav .nav-link');
+          // Select all nav links
+          const navLinks = document.querySelectorAll('nav .nav-link');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
-            // Loop through nav links and add 'active' class to the current page
+            // Loop through nav links and sidebar links to add 'active' class to the current page
             navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
+                if (link.getAttribute('href') === currentPage || 
+                    (currentPage === '' && link.getAttribute('href') === 'index.html')) {
                     link.classList.add('active');
                 }
             });
-        });
 
+            sidebarLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage || 
+                    (currentPage === '' && link.getAttribute('href') === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Add click event to hamburger menu
+            document.getElementById('hamburgerMenu').addEventListener('click', function () {
+                document.getElementById('sidebar').classList.add('active');
+            });
+
+            // Add click event to close button
+            document.getElementById('closeSidebar').addEventListener('click', function () {
+                document.getElementById('sidebar').classList.remove('active');
+            });
+        });
 
 
         document.getElementById('hamburgerMenu').addEventListener('click', function () {
