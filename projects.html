@@ -10,25 +10,37 @@
     <header>
         <nav>
             <div class="left">Yashdeep's Portfolio</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
+            <ul id="navMenu" class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="contact.html" class="nav-link">Contact Me</a></li>
             </ul>
+            <div id="hamburgerMenu" class="hamburger">&#9776;</div>
         </nav>
+        <!-- Sidebar for mobile view -->
+        <div id="sidebar" class="sidebar">
+            <div id="closeSidebar" class="close-btn">&#10005;</div>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="contact.html" class="nav-link">Contact Me</a></li>
+            </ul>
+        </div>
     </header>
     <main>
         <section>
             <h1>Projects</h1>
-            <p>Here are some of the projects I have worked on :</p>
+            <p>Here are some of the projects I have worked on:</p>
             <ul>
                 <li>Dynamic Portfolio Website</li>
                 <li>Graphic Design Portfolio</li>
-                <li>Javascript Calculator</li>
+                <li>JavaScript Calculator</li>
                 <li>Quiz App</li>
-                <li>Youtube Clone</li>
+                <li>YouTube Clone</li>
                 <li>Video Editing Showreel</li>
                 <li>3D Modeling Projects</li>
             </ul>
@@ -37,9 +49,49 @@
     <footer>
         <div class="footer">
             <div class="footer-rights">
-                Copyright &#169; www.yashportfolio.com All rights reserved
+                Copyright &#169; www.yashportfolio.com | All rights reserved
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the current page URL (excluding query parameters)
+            const currentPage = window.location.pathname.split('/').pop();
+        
+            // Select all nav links
+            const navLinks = document.querySelectorAll('nav .nav-link');
+        
+            // Loop through nav links and add 'active' class to the current page
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        
+            // Add click event to hamburger menu
+            document.getElementById('hamburgerMenu').addEventListener('click', function () {
+                document.getElementById('sidebar').classList.add('active');
+            });
+
+            // Add click event to close button
+            document.getElementById('closeSidebar').addEventListener('click', function () {
+                document.getElementById('sidebar').classList.remove('active');
+            });
+        });
+
+         // Set active class on the current page link
+    document.addEventListener('DOMContentLoaded', function () {
+        const currentPage = window.location.pathname.split('/').pop(); // Get current page filename
+        const navLinks = document.querySelectorAll('nav .nav-link');
+
+        navLinks.forEach(link => {
+            // Get the href attribute and compare with current page filename
+            if (link.getAttribute('href') === currentPage || 
+                (currentPage === '' && link.getAttribute('href') === 'index.html')) {
+                link.classList.add('active'); // Add active class to the current page link
+            }
+        });
+    });
+    </script>
 </body>
 </html>
