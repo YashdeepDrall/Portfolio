@@ -11,101 +11,150 @@
         rel="stylesheet">
     <style>
         * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    background-color: rgb(2, 2, 52);
-    color: aliceblue;
-    font-family: 'Poppins', sans-serif;
-}
+        body {
+            background-color: rgb(2, 2, 52);
+            color: aliceblue;
+            font-family: 'Poppins', sans-serif;
+        }
 
-/* Navbar Styles */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
+        /* Navbar Styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            background-color: rgb(39, 39, 85);
+            padding: 0 20px;
+            position: relative;
+        }
+
+        nav .left {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            transition: color 0.3s ease, font-size 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: rgb(109, 109, 238);
+            font-size: 1.2rem;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hamburger:hover {
+            color: rgb(109, 109, 238);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 20%;
+                display: none;
+                background-color: rgb(39, 39, 85);
+                position: absolute;
+                top: 80px;
+                left: 0;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hide off-screen by default */
+    width: 250px;
+    height: 100%;
     background-color: rgb(39, 39, 85);
-    padding: 0 20px;
+    transition: left 0.3s ease;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+.sidebar.active {
+    left: 0; /* Slide in when active */
 }
 
-nav .left {
-    font-size: 1.5rem;
-}
-
-nav ul {
-    display: flex;
+.sidebar ul {
     list-style: none;
-    padding: 0;
+    padding: 20px;
     margin: 0;
 }
 
-nav ul li {
-    margin: 0 15px;
+.sidebar ul li {
+    margin: 15px 0;
 }
 
-nav ul li a {
+.sidebar ul li a {
     text-decoration: none;
     color: white;
     padding: 10px;
-    transition: color 0.3s ease, font-size 0.3s ease;
+    display: block;
+    transition: color 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
     color: rgb(109, 109, 238); /* Color for hover and active state */
     font-size: 1.2rem;
 }
 
-/* For the hamburger menu */
-.hamburger {
-    display: none;
+.close-btn {
     font-size: 2rem;
     color: white;
     cursor: pointer;
-    position: absolute; /* Absolute positioning within the nav container */
-    right: 20px; /* Adjust this to align the hamburger icon to the right */
-    transition: color 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
-
-.hamburger:hover {
+.close-btn:hover {
     color: rgb(109, 109, 238);
-    transform: scale(1.1);
 }
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav ul {
-        flex-direction: column;
-        width: 100%;
-        display: none;
-    }
-
-    nav ul.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: block;
-    }
-}
-        /* Optional: Add transition effects */
-        nav ul {
-            transition: max-height 0.3s ease-out;
-        }
-
-        nav ul.active {
-            max-height: 500px;
-            /* Adjust height to show menu */
-        }
 
         main hr {
             border: 0;
@@ -121,6 +170,7 @@ nav ul li a.active {
             margin: 140px 0;
             padding: 0 20px;
             overflow-x: auto;
+            flex-wrap: wrap;
         }
 
         .firstSection .leftSection {
@@ -132,9 +182,7 @@ nav ul li a.active {
         .firstSection .buttons {
             display: flex;
             justify-content: center;
-            /* Align buttons horizontally in the center */
             gap: 20px;
-            /* Space between buttons */
             padding: 40px 0;
         }
 
@@ -148,16 +196,13 @@ nav ul li a.active {
             cursor: pointer;
             text-align: center;
             text-decoration: none;
-            /* Ensure text decoration is none */
             display: inline-block;
             transition: background-color 0.3s, color 0.3s;
-            /* Smooth transition for hover effect */
         }
 
         .firstSection .btn:hover {
             background: white;
             color: #1e2167;
-            /* Change text color on hover */
         }
 
         .firstSection .rightSection {
@@ -198,44 +243,20 @@ nav ul li a.active {
 
         .secondSection .box {
             background: rgb(39, 39, 85);
-            ;
-            /* Adjust background color as needed */
             width: 100%;
-            /* Ensure it takes full width */
             padding: 20px;
-            /* Add padding for better spacing */
             display: flex;
             justify-content: space-around;
-            /* Space out items evenly */
             flex-wrap: wrap;
-            /* Allow items to wrap on smaller screens */
         }
 
         .secondSection .vertical {
             flex: 1 1 250px;
-            /* Adjust flex basis for responsiveness */
             max-width: 300px;
-            /* Limit maximum width */
             margin: 10px;
-            /* Margin around each vertical section */
             text-align: left;
-            /* Align text to the left */
             padding: 20px;
-            /* Add padding inside the section */
         }
-
-        .secondSection .vertical:last-of-type {
-            text-align: left;
-            /* Align last item text to the left */
-        }
-
-        /* Specific styling for the 'Currently Working....' section */
-        .secondSection .vertical:last-of-type .vertical-title,
-        .secondSection .vertical:last-of-type .vertical-desc {
-            text-align: left;
-            /* Align text inside to the left */
-        }
-
 
         .image-top {
             width: 50px;
@@ -290,20 +311,6 @@ nav ul li a.active {
         }
 
         @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav ul {
-                flex-direction: column;
-                margin-top: 10px;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
             .firstSection {
                 flex-direction: column;
                 align-items: center;
@@ -378,7 +385,18 @@ nav ul li a.active {
             <div class="hamburger" id="hamburgerMenu">&#9776;</div> <!-- Hamburger icon -->
         </nav>
     </header>
-    
+
+    <div id="sidebar" class="sidebar">
+        <div id="closeSidebar" class="close-btn">&#10005;</div>
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="contact.html" class="nav-link">Contact Me</a></li>
+        </ul>
+    </div>
+
 
     <main>
         <section class="firstSection">
@@ -388,8 +406,8 @@ nav ul li a.active {
                 <span id="element"></span>
 
                 <div class="buttons">
-                    <a href="resume.pdf.pdf" download="Yashdeep_Resume.pdf" target="_blank"
-                        class="btn">Download Resume</a>
+                    <a href="resume.pdf.pdf" download="Yashdeep_Resume.pdf" target="_blank" class="btn">Download
+                        Resume</a>
 
 
 
@@ -507,27 +525,31 @@ nav ul li a.active {
             typeSpeed: 50,
         });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the current page URL (excluding query parameters)
-        const currentPage = window.location.pathname.split('/').pop();
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the current page URL (excluding query parameters)
+            const currentPage = window.location.pathname.split('/').pop();
 
-        // Select all nav links
-        const navLinks = document.querySelectorAll('nav .nav-link');
+            // Select all nav links
+            const navLinks = document.querySelectorAll('nav .nav-link');
 
-        // Loop through nav links and add 'active' class to the current page
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
-                link.classList.add('active');
-            }
+            // Loop through nav links and add 'active' class to the current page
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
         });
-    });
 
 
 
-document.getElementById('hamburgerMenu').addEventListener('click', function() {
-    document.querySelector('nav ul').classList.toggle('active');
-});
+        document.getElementById('hamburgerMenu').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.add('active');
+        });
 
+
+        document.getElementById('closeSidebar').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.remove('active');
+        });
 
     </script>
 
